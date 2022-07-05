@@ -13,6 +13,7 @@ void board();
 
 int main()
 {
+    board();
     return (0);
 }
 
@@ -50,3 +51,28 @@ int checkWin()
 
 
 // board will render the board on the console
+void board()
+{
+    // system is part of the standard library
+    // passing 'cls' will clear the console screen
+    system("cls");
+    // \t is used for tab
+    cout << "\n\n\tTic Tac Toe\n\n";
+
+    cout << "Player 1 (X)  -  Player 2 (O)" << endl << endl;
+
+    cout << "     |     |     " << endl;
+    cout << "  " << square[1] << "  |  " << square[2] << "  |  " << square[3] << "  " << endl;
+
+    cout << "_____|_____|_____" << endl;
+    cout << "     |     |     " << endl;
+
+    cout << "  " << square[4] << "  |  " << square[5] << "  |  " << square[6] << "  " << endl;
+
+    cout << "_____|_____|_____" << endl;
+    cout << "     |     |     " << endl;
+
+    cout << "  " << square[7] << "  |  " << square[8] << "  |  " << square[9] << "  " << endl;
+
+    cout << "     |     |     " << endl;
+}
