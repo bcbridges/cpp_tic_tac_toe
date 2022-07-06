@@ -14,6 +14,7 @@ char soln[10] = {'o', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 // Defined below main fn
 int checkWin();
 void board();
+bool isNumeric();
 
 int main()
 {
@@ -31,6 +32,14 @@ int main()
 
         cout << "Player " << player << ", enter a number: ";
         cin >> choice;
+
+        if(cin.fail())
+        {
+            cin.clear();
+            cin.ignore();
+            cin.get();
+            continue;
+        }
 
         mark = (player == 1) ? 'X' : 'O';
 
@@ -66,6 +75,12 @@ int main()
     cin.get();
 
     return (0);
+}
+
+bool isNumeric()
+{
+
+    return(1);
 }
 
 // checkWin will check all possible combos of possible wins
