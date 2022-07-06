@@ -1,10 +1,13 @@
 #include <iostream>
+#include <string>
+#include <string.h>
 
 // Better practice to not use the below statement to avoid naming conflicts
 // Using here since such a tiny project.
 using namespace std;
 
 char square[10] = {'o', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+char soln[10] = {'o', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
 // Declared here since CPP does not have hoisting
 // Defined below main fn
@@ -13,7 +16,56 @@ void board();
 
 int main()
 {
+    // player will be used to determine who's turn
+    // i will be used to hold match results after each selection
+    // choice is choice duh
+    int player = 1, i, choice;
+    // This will oscillate between X and O
+    char mark;
+
+    do
+    {
+        board();
+        player = (player % 2) ? 1 : 2;
+
+        cout << "Player " << player << ", enter a number: ";
+        cin >> choice;
+
+        mark = (player == 1) ? 'X' : 'O';
+
+        for (int i = 1; i < 11; i++)
+        {
+             if (i == 11)
+            {
+                cout << "Invalid move ";
+                player--;
+                cin.ignore();
+                cin.get();
+            }
+            if (choice == i && square[i] == soln[i])
+            {
+//                square[i] == i
+                square[i] = mark;
+                break;
+            }
+        }
+        i = checkWin();
+        player++;
+
+    } while (i == -1);
+
     board();
+    if(i == 1)
+    {
+        cout << "==>\aPlayer " << --player << " wins!";
+    } else
+    {
+        cout << "\aGame draw";
+    }
+
+    cin.ignore();
+    cin.get();
+
     return (0);
 }
 
@@ -54,7 +106,7 @@ int checkWin()
 void board()
 {
     // system is part of the standard library
-    // passing 'cls' will clear the console screen
+    // passing 'cls' will clear the console screen so a new screen can re-render
     system("cls");
     // \t is used for tab
     cout << "\n\n\tTic Tac Toe\n\n";
