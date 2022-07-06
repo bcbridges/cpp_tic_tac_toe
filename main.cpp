@@ -7,6 +7,7 @@
 using namespace std;
 
 char square[10] = {'o', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+// The solutions (soln) are the base case to compare if the original values changed.
 char soln[10] = {'o', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
 // Declared here since CPP does not have hoisting
@@ -37,14 +38,12 @@ int main()
         {
              if (i == 11)
             {
-                cout << "Invalid move ";
                 player--;
                 cin.ignore();
                 cin.get();
             }
             if (choice == i && square[i] == soln[i])
             {
-//                square[i] == i
                 square[i] = mark;
                 break;
             }
@@ -52,7 +51,7 @@ int main()
         i = checkWin();
         player++;
 
-    } while (i == -1);
+    } while (i <= -1);
 
     board();
     if(i == 1)
@@ -88,14 +87,14 @@ int checkWin()
         return 1;
     else if (square[3] == square[6] && square[6] == square[9])
         return 1;
+    // Check Diagonals
     else if (square[1] == square[5] && square[5] == square[9])
         return 1;
     else if (square[3] == square[5] && square[5] == square[7])
         return 1;
-    // maybe loop through array to check values against their index number and return a bool?
-    else if (square[1] != '1' && square[2] != '2', square[3] != '3'
-             && square[4] != '4' && square[5] != '5' && square[6] != '6'
-             && square[7] != '7' && square[8] != '8' && square[9] != '9')
+    else if (square[1] != '1' && square[2] != '2' && square[3] != '3'
+            && square[4] != '4' && square[5] != '5' && square[6] != '6'
+            && square[7] != '7' && square[8] != '8' && square[9] != '9')
         return 0;
     else
         return -1;
