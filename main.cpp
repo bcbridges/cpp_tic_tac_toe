@@ -1,6 +1,4 @@
 #include <iostream>
-#include <string>
-#include <string.h>
 
 // Better practice to not use the below statement to avoid naming conflicts
 // Using here since such a tiny project.
